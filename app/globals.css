@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #002868; /* American flag blue */
+  --accent: #BF0A30; /* American flag red */
+  --background: #ffffff;
+  --foreground: #333333;
+  --muted: #f5f5f5;
+  --muted-foreground: #999999;
+  --border: #e2e8f0;
+}
+
+.dark {
+  --primary: #002868;
+  --accent: #BF0A30;
+  --background: #121212;
+  --foreground: #f5f5f5;
+  --muted: #1e1e1e;
+  --muted-foreground: #a1a1aa;
+  --border: #2e2e2e;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold md:text-4xl lg:text-5xl;
+  }
+  
+  h2 {
+    @apply text-2xl font-bold md:text-3xl lg:text-4xl;
+  }
+  
+  h3 {
+    @apply text-xl font-bold md:text-2xl;
+  }
+  
+  h4 {
+    @apply text-lg font-bold md:text-xl;
+  }
+  
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply max-w-[1200px] mx-auto px-4 sm:px-6;
+  }
+  
+  .btn-primary {
+    @apply bg-[#BF0A30] hover:bg-[#a00828] text-white font-bold py-3 px-6 rounded-md transition-all duration-300 inline-flex items-center justify-center;
+  }
+  
+  .btn-secondary {
+    @apply bg-[#002868] hover:bg-[#001d4d] text-white font-bold py-3 px-6 rounded-md transition-all duration-300 inline-flex items-center justify-center;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-[#002868] text-[#002868] hover:bg-[#002868] hover:text-white font-bold py-3 px-6 rounded-md transition-all duration-300 inline-flex items-center justify-center;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-[#1e1e1e] rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .section-alt {
+    @apply py-16 md:py-24 bg-[#f5f5f5] dark:bg-[#1a1a1a];
+  }
+}
+
+/* SUPPORT NEXTJS ERROR UI */
+nextjs-portal {
+  display: none;
+}
+
+/* SUPPORT NEXTJS ERROR UI */
+nextjs-portal {
+  display: none;
+}

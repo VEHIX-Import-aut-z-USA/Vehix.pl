@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  // Удалено: binaryTargets и output для кроссплатформенной совместимости
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ContactForm {
+  id                Int      @id @default(autoincrement())
+  name              String
+  email             String
+  phone             String
+  carModel          String?
+  budget            String?
+  preferredContact  String?
+  message           String
+  marketingConsent  Boolean  @default(false)
+  createdAt         DateTime @default(now())
+}
+
+model Consultation {
+  id                Int      @id @default(autoincrement())
+  name              String
+  phone             String
+  email             String
+  preferredDate     DateTime
+  consultationType  String
+  needs             String?
+  createdAt         DateTime @default(now())
+}
+
+model Subscriber {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+}
