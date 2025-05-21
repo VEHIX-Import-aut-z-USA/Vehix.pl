@@ -1,5 +1,5 @@
 import Image from "next/image";
-import JsonLdClient from "@/components/ui/JsonLdClient";
+import Script from "next/script";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -27,24 +27,27 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="pt-20 pb-16">
-      <JsonLdClient
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "VEHIX",
-          url: "https://vehix.pl",
-          logo: "https://vehix.pl/logo.png",
-          sameAs: [
-            "https://facebook.com/vehiximport",
-            "https://instagram.com/vehix.pl",
-          ],
-          contactPoint: {
-            "@type": "ContactPoint",
-            telephone: "+48 600 928 700",
-            contactType: "Customer Support",
-            areaServed: "PL",
-            availableLanguage: ["pl", "en"],
-          },
+      <Script
+        id="schema-org-o-nas"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "VEHIX",
+            url: "https://vehix.pl/o-nas",
+            logo: "https://vehix.pl/Vehix-Logo-PNG.png",
+            sameAs: [
+              "https://www.facebook.com/vehixpolska",
+              "https://www.instagram.com/vehixpolska"
+            ],
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+48 600 928 700",
+              contactType: "Customer Service"
+            }
+          })
         }}
       />
 
