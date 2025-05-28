@@ -3,17 +3,21 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl;
+  const isProduction = process.env.NODE_ENV === "production";
+  const proto = request.headers.get("x-forwarded-proto");
 
-  // ✅ Только в проде: принудительный HTTPS
-  if (process.env.NODE_ENV === "production" && url.protocol === "http:") {
-    url.protocol = "https:";
-    return NextResponse.redirect(url);
+  // 🔒 HTTPS только в продакшене
+  if (isProduction && proto && proto !== "https") {
+    return NextResponse.redirect(
+      new URL(`https://${url.hostname}${url.pathname}${url.search}`)
+    );
   }
 
-  // 🚫 Удаление www (всегда, независимо от среды)
+  // 🌐 Удаление www. всегда
   if (url.hostname.startsWith("www.")) {
+    const newHostname = url.hostname.replace("www.", "");
     return NextResponse.redirect(
-      new URL(url.href.replace("www.", ""))
+      new URL(`${url.protocol}//${newHostname}${url.pathname}${url.search}`)
     );
   }
 
