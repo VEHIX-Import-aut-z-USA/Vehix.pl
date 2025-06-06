@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/db";
 
-const prisma = new PrismaClient();
 
 const TELEGRAM_TOKEN = "7220685191:AAGuyb08-itj1OkltImBBBC6yL-TCyhqs50";
 const TELEGRAM_CHAT_ID = "7808843941"; // ← Twój prawdziwy ID z @userinfobot
