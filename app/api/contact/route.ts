@@ -3,8 +3,8 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const TELEGRAM_TOKEN = "7220685191:AAGuyb08-itj1OkltImBBBC6yL-TCyhqs50";
-const TELEGRAM_CHAT_ID = "7808843941"; // ← Twój prawdziwy ID z @userinfobot
+const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN!;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID!;
 
 export async function POST(req: NextRequest) {
   try {

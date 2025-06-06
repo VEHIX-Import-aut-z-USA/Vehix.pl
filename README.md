@@ -37,7 +37,7 @@ Strona internetowa dla firmy Vehix zajmującej się importem samochodów z USA.
 npm install
 ```
 
-3. Skopiuj plik `.env.example` do `.env` i uzupełnij dane dostępowe do bazy danych:
+3. Skopiuj plik `.env.example` do `.env` i uzupełnij zmienne środowiskowe:
 
 ```bash
 cp .env.example .env
@@ -65,12 +65,20 @@ npm run dev
 - `public/` - Statyczne pliki (obrazy, fonty, itp.)
 - `lib/` - Funkcje pomocnicze i konfiguracja
 
+## Zmienne środowiskowe
+
+W projekcie wymagane są następujące zmienne:
+
+- `DATABASE_URL` – adres URL bazy danych PostgreSQL
+- `TELEGRAM_TOKEN` – token bota Telegram
+- `TELEGRAM_CHAT_ID` – ID czatu do wysyłania powiadomień
+
 ## Wdrożenie
 
 Aplikacja jest gotowa do wdrożenia na platformach takich jak Vercel, Netlify czy AWS.
 
 1. Skonfiguruj bazę danych PostgreSQL
-2. Ustaw zmienne środowiskowe (DATABASE_URL)
+2. Ustaw zmienne środowiskowe (DATABASE_URL, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID)
 3. Wdróż aplikację za pomocą preferowanej platformy
 
 ## Licencja
